@@ -4,6 +4,12 @@
     </app-recipe-list>
   </div>
   <div class="col-md-7" style="border-left: 1px solid gray">
-    <app-recipe-detail [data]="selectedRecipeItem"></app-recipe-detail>
+    <app-recipe-detail
+      *ngIf="selectedRecipeItem; else noRecipe"
+      [data]="selectedRecipeItem"
+    ></app-recipe-detail>
+    <ng-template #noRecipe>
+      <P>select a recipe please!</P>
+    </ng-template>
   </div>
 </div>

@@ -9,7 +9,6 @@ import { Recipe } from '../recipe.model';
 export class RecipeListComponent implements OnInit {
   @Output('onRecipeItemSelected') recipeItemEmitter =
     new EventEmitter<Recipe>();
-  selectedRecipe: Recipe;
   recipes: Recipe[] = [
     new Recipe(
       'test reciepe 1',
@@ -30,9 +29,7 @@ export class RecipeListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-  onRecipeSelected(reciepeId: number) {
-    this.selectedRecipe = this.recipes[reciepeId];
-    console.log('in r-list :' + this.selectedRecipe);
-    this.recipeItemEmitter.emit(this.selectedRecipe);
+  onRecipeSelected(reciepe: Recipe) {
+    this.recipeItemEmitter.emit(reciepe);
   }
 }
